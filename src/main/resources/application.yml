@@ -1,0 +1,43 @@
+#系统设置
+system:
+  version: 1.0
+  description:
+  name: thinker-ws
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: thinker-ws
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  # JPA
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform:
+
+mybatis:
+  type-aliases-package: com.jyou.thinker.ws.domain
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:/mybatis-config.xml
+
+mapper:
+  mappers:
+    - com.jyou.thinker.ws.utils.MyMapper
+  not-empty: false
+  identity: postgresql
+
+pagehelper:
+  helperDialect: postgresql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
